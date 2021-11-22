@@ -1,13 +1,17 @@
 
 
-import titleView from "/src/layouts/topMenuView/titleView";
+import mainView from "/src/layouts/mainView.js";
 
 
 const main = () => {
 
-    new titleView();
+    initView();
 
-}
+};
+
+const initView = () => {
+    new mainView();
+};
 
 
 

@@ -1,0 +1,16 @@
+
+
+.title{
+    margin-right: auto;
+    margin-left: auto;
+    content: url(./assets/logo.png)
+}
+
+.naviMenu {
+    margin-top: 3em;
+}
+
+.childMenu{
+    display: inline;
+    margin-right: 5em;
+}

@@ -21,11 +21,11 @@ module.exports = {
     },*/
     output: {
         // 아웃풋 파일 이름 지정
-        filename: 'App.js',
-        path: path.resolve('./public')
+        filename: 'main.js',
+        path: path.resolve('./dist')
 
     },
-    devtool: '#inline-source-map',
+    devtool: 'ource-map',
     plugins: [
 
         new webpack.ProvidePlugin({
@@ -33,28 +33,32 @@ module.exports = {
            jQuery: "jquery"
         }),
         // 컴파일 + 번들링 CSS 파일이 저장될 경로와 이름 지정
-        new MiniCssExtractPlugin({ filename: 'App.css' }),
+        new MiniCssExtractPlugin({ filename: 'main.css' }),
         new HtmlWebpackPlugin({
             template: './src/index.html', // src/index.html 파일을 읽는다.
             filename: 'index.html' ,// output으로 출력할 파일은 index.html 이다.
             hash: true, // 정적 파일을 불러올때 쿼리문자열에 웹팩 해쉬값을 추가한다
         }),
         new CleanWebpackPlugin({
-            cleanAfterEveryBuildPatterns: ['public']
+            cleanAfterEveryBuildPatterns: ['dist']
         }),
     ],
     module: {
         rules: [
-            // {
-            //     test: /\.html$/,
-            //     include: [
-            //         path.resolve('./src')
-            //     ],
-            //     use: {
-            //         loader: 'html-loader',
-            //         options: {minimize: true}
-            //     }
-            // },
+
+            //file-loader
+            {
+                test: /\.(png|jpe?g|gif)$/i, // .css 확장자로 끝나는 모든 파일
+                loader: 'file-loader',
+                include: [
+                    path.resolve('./src')
+                ],
+                options: {
+                    name: 'assets/[contenthash].[ext]'
+                },
+                exclude: /node_modules/,
+            },
+
             {
                 test: /\.js$/, // .js 확장자로 끝나는 모든 파일 // 로딩에 적용할 파일 지정
                 include: [
@@ -80,19 +84,7 @@ module.exports = {
                     'css-loader'
                 ],
                 exclude: /node_modules/,
-            },
-            //file-loader
-            {
-                test: /\.(png|jpg)$/, // .css 확장자로 끝나는 모든 파일
-                include: [
-                    path.resolve('./src/resources/images')
-                ],
-                use: [
-                   'file-loader'
-                ],
-                exclude: /node_modules/,
             }
-
         ]
     },
     optimization : {

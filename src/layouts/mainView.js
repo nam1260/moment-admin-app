@@ -1,0 +1,47 @@
+
+
+const GET_RGST_STAR_STATUS = "스타 신청 현황 조회";
+const REQ_REGIST_STAR = "스타 등록 하기";
+const GET_USER_LIST = "사용자 조회";
+const GET_MESSAGE_INFO = "사연 조회";
+
+const menuArr = [GET_RGST_STAR_STATUS, REQ_REGIST_STAR, GET_USER_LIST, GET_MESSAGE_INFO]
+
+
+const mainView = () => {
+
+   let title = $("<img/>", {class: "title"});
+   let naviMenu = $("<div/>", {class: "naviMenu"});
+   let contents = $("<div/>", {class: "contents"});
+
+   $("#App").append(
+      title,naviMenu,contents
+   );
+
+   makeNaviMenu(naviMenu);
+
+
+};
+
+const makeNaviMenu = (parent) => {
+
+   let selectedMenuIdx;
+   const onClickEvent =function(e) {
+
+       let idx = $(this).index();
+       console.log("clickedMenu " + idx)
+
+      //TODO 해당 화면에 맡는 contentView set;
+   }
+
+   for(let i = 0; i < menuArr.length; i++) {
+      selectedMenuIdx = i;
+      console.log(selectedMenuIdx);
+      parent.append(
+          $("<div/>", {class: i+ " childMenu"}).text(menuArr[selectedMenuIdx]).on("click",selectedMenuIdx, onClickEvent)
+      );
+   }
+}
+
+
+export default mainView;
