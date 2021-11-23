@@ -1,4 +1,5 @@
 
+import AWSManager from "../managers/AWSManager";
 
 const GET_RGST_STAR_STATUS = "스타 신청 현황 조회";
 const REQ_REGIST_STAR = "스타 등록 하기";
@@ -26,12 +27,18 @@ const mainView = () => {
 const makeNaviMenu = (parent) => {
 
    let selectedMenuIdx;
-   const onClickEvent =function(e) {
+   const onClickEvent =function() {
 
        let idx = $(this).index();
-       console.log("clickedMenu " + idx)
+       console.log("clickedMenu " + idx);
 
       //TODO 해당 화면에 맡는 contentView set;
+       //스타 신청 현황 조회
+       if(idx === 0) {
+          AWSManager.getRgstStarStatus();
+
+       }
+
    }
 
    for(let i = 0; i < menuArr.length; i++) {
