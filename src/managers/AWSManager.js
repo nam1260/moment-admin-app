@@ -5,6 +5,7 @@ import axios from "axios"
 const SERVER_URL  =  "https://8wuahwyzk9.execute-api.ap-northeast-2.amazonaws.com/test";
 
 const GET_RGST_STAR_STATUS = "/star/get-rgst-star-status";
+const UPDATE_RGST_STAR_STATUS = "/star/update-rgst-star-status";
 
 const API_KEYS = 'hFkmbKrQxO7G8EyATQbBQ8UP8qaS2Lru3ndYbHWL';
 const headers = {
@@ -23,12 +24,19 @@ const AWSManager = (function() {
     };
 
     const getRgstStarStatus = async (params) => {
-        console.log("regUserInfo = " + JSON.stringify(params));
+        console.log("getRgstStarStatus = " + JSON.stringify(params));
         return await requestPost(getUrl(GET_RGST_STAR_STATUS), params);
     };
 
+    const updateRgstStarStatus = async (params) => {
+        console.log("regUserInfo = " + JSON.stringify(params));
+        return await requestPost(getUrl(UPDATE_RGST_STAR_STATUS), params);
+    };
+
+
     return {
-        getRgstStarStatus
+        getRgstStarStatus,
+        updateRgstStarStatus
     }
 
 
