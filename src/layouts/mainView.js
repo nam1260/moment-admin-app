@@ -6,7 +6,7 @@ const REQ_REGIST_STAR = "스타 등록 하기";
 const GET_USER_LIST = "사용자 조회";
 const GET_MESSAGE_INFO = "사연 조회";
 
-const menuArr = [GET_RGST_STAR_STATUS, REQ_REGIST_STAR, GET_USER_LIST, GET_MESSAGE_INFO]
+const menuArr = [GET_RGST_STAR_STATUS, REQ_REGIST_STAR, GET_USER_LIST, GET_MESSAGE_INFO];
 
 
 const mainView = () => {
@@ -38,16 +38,21 @@ const makeNaviMenu = (parent) => {
           AWSManager.getRgstStarStatus();
 
        }else if(idx === 1) {
-      /*     AWSManager.reqRgstStar({
+           AWSManager.reqRgstStar({
                userId: "nam1260@gmail.com",
-               snsType: "instagram",
-               snsId: "wookstagraam",
-               snsNm: "서골남시리즈",
-               snsUrl: "www.naver.com",
-               bankNm: "카카오뱅크",
-               accountNum: "3333030527508",
-               accountNm: "남성욱"
-           })*/
+               snsInfo: {
+                   snsType: "instagram",
+                   snsId: "wookstagraam",
+                   snsNm: "서골남시리즈",
+                   snsUrl: "www.naver.com",
+               },
+               bankInfo: {
+                   bankNm: "카카오뱅크",
+                   accountNum: "3333030527508",
+                   accountNm: "남성욱"
+               },
+
+           })
        }
 
    }
