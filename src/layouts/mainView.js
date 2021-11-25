@@ -37,6 +37,17 @@ const makeNaviMenu = (parent) => {
        if(idx === 0) {
           AWSManager.getRgstStarStatus();
 
+       }else if(idx === 1) {
+      /*     AWSManager.reqRgstStar({
+               userId: "nam1260@gmail.com",
+               snsType: "instagram",
+               snsId: "wookstagraam",
+               snsNm: "서골남시리즈",
+               snsUrl: "www.naver.com",
+               bankNm: "카카오뱅크",
+               accountNum: "3333030527508",
+               accountNm: "남성욱"
+           })*/
        }
 
    }
