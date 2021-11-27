@@ -86,7 +86,8 @@ const makeNaviMenu = (parent) => {
        //스타 신청 현황 조회
        if(idx === 0) {
            updateRgstStarStatusTable();
-       }else if(idx === 1) {
+       }else  alert("현재 기능을 지원하지 않습니다"); return; /*else if(idx === 1) {
+           alert("현재 기능을 지원하지 않습니다");
            AWSManager.reqRgstStar({
                userId: "nam1260@gmail.com",
                snsInfo: {
@@ -102,7 +103,9 @@ const makeNaviMenu = (parent) => {
                },
 
            })
-       }
+       }else {
+
+       }*/
 
    }
 
