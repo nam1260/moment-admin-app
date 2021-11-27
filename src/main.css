@@ -14,3 +14,11 @@
     display: inline;
     margin-right: 5em;
 }
+
+.contentView{
+    margin-top: 10em;
+}
+
+th,td{
+width: 10em;
+}

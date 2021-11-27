@@ -2,22 +2,22 @@
 import AWSManager from "../managers/AWSManager";
 
 const GET_RGST_STAR_STATUS = "스타 신청 현황 조회";
-const REQ_REGIST_STAR = "스타 등록 하기";
+const REQ_REGIST_STAR = "스타 등록 신청서 작성";
 const GET_USER_LIST = "사용자 조회";
 const GET_MESSAGE_INFO = "사연 조회";
 
 const menuArr = [GET_RGST_STAR_STATUS, REQ_REGIST_STAR, GET_USER_LIST, GET_MESSAGE_INFO];
 
-let contents;
+let contentView;
 
 const mainView = () => {
 
    let title = $("<img/>", {class: "title"});
    let naviMenu = $("<div/>", {class: "naviMenu"});
-   contents = $("<div/>", {class: "contents"});
+   contentView = $("<div/>", {class: "contentView"});
 
    $("#App").append(
-      title,naviMenu,contents
+      title,naviMenu,contentView
    );
 
    makeNaviMenu(naviMenu);
@@ -25,38 +25,45 @@ const mainView = () => {
 
 };
 
+const makeRgstStarInputBox = () => {
+
+}
+
 
 //TODO 나머지 필드도 체크해서 채울 것
 
 const updateRgstStarStatusTable = ()=> {
 
-
-    contents.empty();
-
-    let tableElm = $(
-        "<table border='1'>" +
-        "<tr>" +
-        "<th>ID</th>" +
-        "<th>카카오톡 ID</th>" +
-        "<th>인스타그램 ID</th>" +
-        "<th>Youtube 채널명</th>" +
-        "<th>계좌명</th>" +
-        "<th>계좌번호</th>" +
-        "<th>예금주</th>" +
-        "</tr>" +
-        "</table>")
-
-    contents.append(tableElm);
-
+    contentView.empty();
 
     AWSManager.getRgstStarStatus().then((result)=>{
         console.log(result);
+
+        if(!result || !result.data) {
+            alert("등록 신청중인 스타가 존재하지 않습니다");
+            return ;
+        }
+
+        let tableElm = $(
+            "<table border='1'>" +
+            "<tr>" +
+            "<th>ID</th>" +
+            "<th>카카오톡 ID</th>" +
+            "<th>인스타그램 ID</th>" +
+            "<th>Youtube 채널명</th>" +
+            "<th>계좌명</th>" +
+            "<th>계좌번호</th>" +
+            "<th>예금주</th>" +
+            "</tr>" +
+            "</table>");
+
+        contentView.append(tableElm);
+
         if(result && result.data) {
             for(let i = 0 ; i< result.data.length; i++) {
                 let selectedData = result.data[i];
                 let trTag = $("<tr/>",{class: "member_ "+[i]} );
                 let tdTag = $("<td/>").text(selectedData.user_id);
-             //   let tdTag2 = $("<td/>").value(selectedData.userId);
 
                 trTag.append(tdTag);
                 tableElm.append(trTag);
