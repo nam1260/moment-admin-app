@@ -25,7 +25,7 @@ const AWSManager = (function() {
     };
 
     const getRgstStarStatus = async (params) => {
-        console.log("getRgstStarStatus = " + JSON.stringify(params));
+        console.log("getRgstStarStatus");
         return await requestPost(getUrl(GET_RGST_STAR_STATUS), params);
     };
 
