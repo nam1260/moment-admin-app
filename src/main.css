@@ -16,7 +16,11 @@
 }
 
 .contentView{
-    margin-top: 10em;
+    margin-top: 5em;
+}
+
+.selectedUser{
+    margin-bottom: 5em;
 }
 
 th,td{
