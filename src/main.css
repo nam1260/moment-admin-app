@@ -1,6 +1,6 @@
 
 
-.title{
+.logoTitle{
     margin-right: auto;
     margin-left: auto;
     content: url(./assets/logo.png)
@@ -21,6 +21,23 @@
 
 .selectedUser{
     margin-bottom: 5em;
+}
+
+.formArea .form {
+    border-bottom: solid 2px #f0f0f0;
+}
+.formArea input {
+    width: min(70vw, 650px);
+    height: min(10vw, 60px);
+    font-size: min(4vw, 36px);
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: -0.36px;
+    text-align: left;
+    color: #101010;
+    border: none;
 }
 
 th,td{
