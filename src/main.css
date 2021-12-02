@@ -24,8 +24,16 @@
 }
 
 .formArea .form {
+    width: min(70vw, 650px);
+    text-align: left;
+    display: inline-block;
     border-bottom: solid 2px #f0f0f0;
 }
+
+.form span{
+    color : gray;
+}
+
 .formArea input {
     width: min(70vw, 650px);
     height: min(10vw, 60px);
@@ -38,6 +46,11 @@
     text-align: left;
     color: #101010;
     border: none;
+}
+
+
+.btnArea {
+
 }
 
 th,td{

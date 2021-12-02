@@ -1,30 +1,10 @@
 import AWSManager from "../managers/AWSManager";
 
 
+const onClickBtn = (e) => {
+    console.log(e)
 
-class star {
-
-    constructor() {
-
-        this.userId = null;
-        this.kakaoId = null;
-        this.instaId = null;
-        this.youtubeChNm = null;
-        this.bankNm = null;
-        this.accountNum = null;
-        this.accountNm = null;
-
-    }
-
-    setApplyingInfo() {
-
-    }
-
-    getApplyingInfo() {
-
-    }
-
-
+    //TODO inputBox 내 입력 된 쿼리 값을 전부 가져와서 classObj 에 맵핑
 }
 
 const RegistStar = ((parentView) => {
@@ -43,19 +23,19 @@ const RegistStar = ((parentView) => {
     let formTitleArr  = ["사용자 ID(이메일)","카카오톡 ID", "instagram ID", "Youtube 채널 명", "은행명","계좌번호","예금주"];
 
 
-    for(let i = 0 ; i< formTitleArr.length; i++) {
-         form =  $("<div/>",{class:"form"})
-            .append(
-                $("<span/>",{class:"title"}).text(formTitleArr[i]),
-                $("<input/>",{class:"formInput"}),
-            );
-
+    formTitleArr.forEach((item) => {
+        form =  $("<div/>",{class:"form"})
+        .append(
+            $("<span/>",{class:"title"}).text(item),
+            $("<input/>",{class:"formInput"}),
+        );
         formArea.append(form);
-    }
+    })
 
-    parentView.append(titleArea, formArea);
+    let btnArea = $("<div/>", {class: "btnArea"}).append($("<button/>").text("등록").on("click",onClickBtn));
 
 
+    parentView.append(titleArea, formArea,btnArea);
 
 
 });
