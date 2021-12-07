@@ -96,7 +96,7 @@ const showRgstStarStatus = ()=> {
 
         if(e.target.className === "accept") {
             starYn = "Y";
-            starRegStatus = 1;
+            starRegStatus = 2;
         }
         else if(e.target.className === "reject") {
             starYn = "N";
@@ -155,7 +155,7 @@ const showRgstStarStatus = ()=> {
                 let selectedData = result.data[i];
                 let trTag = $("<tr/>",{class: "member_ "+[i]} );
                 trTag.append(
-                    $("<td/>",{class: "user_id"}).text(selectedData.user_id),
+                    $("<td/>",{class: "userId"}).text(selectedData.userId),
                     $("<td/>",{class: "kakaoId"}).text(selectedData.kakaoId),
                     $("<td/>",{class: "instaId"}).text(selectedData.instaId),
                     $("<td/>",{class: "youtubeChNm"}).text(selectedData.youtubeChNm),
@@ -170,7 +170,7 @@ const showRgstStarStatus = ()=> {
                         let selectedUserId = $(".selectedInfo #userId");
                         let selectedUserComment = $(".selectedInfo #userComment");
 
-                        selectedUserId.text(e.currentTarget.querySelector(".user_id").textContent);
+                        selectedUserId.text(e.currentTarget.querySelector(".userId").textContent);
                         selectedUserComment.text(e.currentTarget.querySelector(".userComment").textContent);
                         e.stopPropagation();
                 });
