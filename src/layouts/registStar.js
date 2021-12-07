@@ -3,8 +3,50 @@ import AWSManager from "../managers/AWSManager";
 
 const onClickBtn = (e) => {
     console.log(e)
+    let formArea = $(".formArea");
+  //  let formArea = document.getElementsByClassName("formArea");
+   // let userId = formArea.getElementById("userId").value
 
-    //TODO inputBox 내 입력 된 쿼리 값을 전부 가져와서 classObj 에 맵핑
+    let userId = formArea.find("#userId")[0].value;
+    let kakaoId = formArea.find("#kakaoId")[0].value;
+    let instaId = formArea.find("#instaId")[0].value;
+    let youtubeChNm = formArea.find("#youtubeChNm")[0].value;
+    let bankNm = formArea.find("#bankNm")[0].value;
+    let accountNum = formArea.find("#accountNum")[0].value;
+    let accountNm = formArea.find("#accountNm")[0].value;
+
+    //빈 값 체크
+    if(!userId || (!kakaoId && !instaId && !youtubeChNm) || !bankNm || !accountNm || !accountNum ) {
+        alert("빈칸을 채우세요");
+        return;
+    }
+
+    //1.먼저 사용자가 존재하는지 확인
+    console.log(userId);
+
+    //
+
+    AWSManager.checkDuplId({
+        userId: userId
+    }).then(function(result){
+        if(result && result.status === 200) {
+            if(!result.data.isDupl) alert("모먼트 가입 유저만 사용자만 스타 등록이 가능합니다.");
+            else {
+                AWSManager.reqRgstStar({
+                    userId,
+                    kakaoId,
+                    instaId,
+                    youtubeChNm,
+                    bankNm,
+                    accountNum,
+                    accountNm
+                })
+            }
+        }else {
+            alert("서버 에러 ")
+        }
+    })
+
 }
 
 const RegistStar = ((parentView) => {
@@ -20,14 +62,22 @@ const RegistStar = ((parentView) => {
 
     let formArea = $("<div/>",{class:"formArea"});
     let form;
-    let formTitleArr  = ["사용자 ID(이메일)","카카오톡 ID", "instagram ID", "Youtube 채널 명", "은행명","계좌번호","예금주"];
+    let formTitleArr  = [
+        {id: "userId", name:"사용자 ID(이메일)"},
+        {id: "kakaoId", name:"카카오톡 ID"},
+        {id: "instaId", name:"instagram ID"},
+        {id: "youtubeChNm", name:"Youtube 채널 명"},
+        {id: "bankNm", name:"은행명"},
+        {id: "accountNum", name:"계좌번호"},
+        {id: "accountNm", name:"예금주"}];
+
 
 
     formTitleArr.forEach((item) => {
         form =  $("<div/>",{class:"form"})
         .append(
-            $("<span/>",{class:"title"}).text(item),
-            $("<input/>",{class:"formInput"}),
+            $("<span/>",{class:"title"}).text(item.name),
+            $("<input/>",{class:"formInput",id:item.id}),
         );
         formArea.append(form);
     })

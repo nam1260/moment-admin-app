@@ -7,7 +7,7 @@ const SERVER_URL  =  "https://8wuahwyzk9.execute-api.ap-northeast-2.amazonaws.co
 const GET_RGST_STAR_STATUS = "/star/get-rgst-star-status";
 const UPDATE_RGST_STAR_STATUS = "/star/update-rgst-star-status";
 const REQ_RGST_STAR = "/star/req-rgst-star";
-
+const CHECK_DUPL_ID  =  "/user/check-dupl-id";
 const API_KEYS = 'hFkmbKrQxO7G8EyATQbBQ8UP8qaS2Lru3ndYbHWL';
 const headers = {
     'x-api-key' : API_KEYS,
@@ -39,12 +39,17 @@ const AWSManager = (function() {
         console.log("updateRgstStarStatus = " + JSON.stringify(params));
         return await requestPost(getUrl(UPDATE_RGST_STAR_STATUS), params);
     };
+    const checkDuplId = async (params) => {
+        console.log("checkDuplId = " + JSON.stringify(params));
+        return await requestPost(getUrl(CHECK_DUPL_ID), params);
+    };
 
 
     return {
         getRgstStarStatus,
         updateRgstStarStatus,
-        reqRgstStar
+        reqRgstStar,
+        checkDuplId
     }
 
 
