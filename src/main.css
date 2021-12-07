@@ -23,10 +23,12 @@
     margin-bottom: 5em;
 }
 
-.formArea .form {
-    width: min(70vw, 650px);
-    text-align: left;
+.formArea {
     display: inline-block;
+}
+.formArea .form {
+    text-align: left;
+    width: min(70vw, 650px);
     border-bottom: solid 2px #f0f0f0;
 }
 
