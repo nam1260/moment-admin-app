@@ -1,6 +1,15 @@
 import AWSManager from "../managers/AWSManager";
 
 
+const handleCompleteRegist = (_result) => {
+    console.log(_result);
+    if(_result && _result.status === 200) {
+        alert("스타 등록 신청이 완료되었습니다");
+    }else {
+        alert("서버 에러 ");
+    }
+}
+
 const onClickBtn = (e) => {
     console.log(e)
     let formArea = $(".formArea");
@@ -40,10 +49,10 @@ const onClickBtn = (e) => {
                     bankNm,
                     accountNum,
                     accountNm
-                })
+                }).then(handleCompleteRegist)
             }
         }else {
-            alert("서버 에러 ")
+            alert("서버 에러 ");
         }
     })
 
