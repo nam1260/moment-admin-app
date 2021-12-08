@@ -42,15 +42,15 @@ const applyingStar = ((parentView)=>{
         let starInfoBox = $("<div/>", {class: "starInfoBox"}).on("click",onSelectedUserBtnClick);
 
         starInfoBox.append(
-            $("<div/>", {id: "userId"}),
-            $("<div/>", {id: "kakaoId"}),
-            $("<div/>", {id: "instaId"}),
-            $("<div/>", {id: "youtubeChNm"}),
-            $("<div/>", {id: "bankNm"}),
-            $("<div/>", {id: "accountNum"}),
-            $("<div/>", {id: "acccountNm"}),
-            $("<div/>", {id: "userComment"}),
-            $("<div/>", {id: "adminComment"})
+            $("<div/>", {id: "userId"}).append($("<span />").text("사용자 id")),
+            $("<div/>", {id: "kakaoId"}).append($("<span />").text("카카오톡 id")),
+            $("<div/>", {id: "instaId"}).append($("<span />").text("인스타그램 id")),
+            $("<div/>", {id: "youtubeChNm"}).append($("<span />").text("유튜브 채널 명")),
+            $("<div/>", {id: "bankNm"}).append($("<span />").text("은행 명")),
+            $("<div/>", {id: "accountNum"}).append($("<span />").text("계좌 번호 ")),
+            $("<div/>", {id: "acccountNm"}).append($("<span />").text("예금주")),
+            $("<div/>", {id: "userComment"}).append($("<span />").text("사용자 답변")),
+            $("<div/>", {id: "adminComment"}).append($("<span />").text("관리자 답변"))
         ).append(
             $("<span class='answer'/>")
             .css({"text-align": "left"})
