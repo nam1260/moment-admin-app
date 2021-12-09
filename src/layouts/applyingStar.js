@@ -7,7 +7,7 @@ function onSelectedUserBtnClick(e) {
 
     if(e.target.className !== "accept" && e.target.className !== "reject") return ;
 
-    let userId = $(".starInfoBox #userId").text();
+    let userId = $(".starInfoBox #userId #value").text();
     let adminComment = $(".starInfoBox input")[0].value;
     let starYn = "N";
     let starRegStatus = 0;
