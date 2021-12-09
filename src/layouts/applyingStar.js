@@ -42,15 +42,15 @@ const applyingStar = ((parentView)=>{
         let starInfoBox = $("<div/>", {class: "starInfoBox"}).on("click",onSelectedUserBtnClick);
 
         starInfoBox.append(
-            $("<div/>", {id: "userId"}).append($("<span />").text("사용자 id")),
-            $("<div/>", {id: "kakaoId"}).append($("<span />").text("카카오톡 id")),
-            $("<div/>", {id: "instaId"}).append($("<span />").text("인스타그램 id")),
-            $("<div/>", {id: "youtubeChNm"}).append($("<span />").text("유튜브 채널 명")),
-            $("<div/>", {id: "bankNm"}).append($("<span />").text("은행 명")),
-            $("<div/>", {id: "accountNum"}).append($("<span />").text("계좌 번호 ")),
-            $("<div/>", {id: "acccountNm"}).append($("<span />").text("예금주")),
-            $("<div/>", {id: "userComment"}).append($("<span />").text("사용자 답변")),
-            $("<div/>", {id: "adminComment"}).append($("<span />").text("관리자 답변"))
+            $("<div/>", {id: "userId"}).append($("<span />").text("사용자 id: "),$("<span />",{id:"value"})),
+            $("<div/>", {id: "kakaoId"}).append($("<span />").text("카카오톡 id: "),$("<span />",{id:"value"})),
+            $("<div/>", {id: "instaId"}).append($("<span />").text("인스타그램 id: "),$("<span />",{id:"value"})),
+            $("<div/>", {id: "youtubeChNm"}).append($("<span />").text("유튜브 채널 명: "),$("<span />",{id:"value"})),
+            $("<div/>", {id: "bankNm"}).append($("<span />").text("은행 명: "),$("<span />",{id:"value"})),
+            $("<div/>", {id: "accountNum"}).append($("<span />").text("계좌 번호: "),$("<span />",{id:"value"})),
+            $("<div/>", {id: "accountNm"}).append($("<span />").text("예금주: "),$("<span />",{id:"value"})),
+            $("<div/>", {id: "userComment"}).append($("<span />").text("사용자 답변: "),$("<span />",{id:"value"})),
+            $("<div/>", {id: "adminComment"}).append($("<span />").text("관리자 답변: "),$("<span />",{id:"value"}))
         ).append(
             $("<span class='answer'/>")
             .css({"text-align": "left"})
@@ -112,22 +112,26 @@ const applyingStar = ((parentView)=>{
                     $("<td/>",{id: "userComment"}).text(item.userComment),
                     $("<td/>",{id: "adminComment"}).text(item.adminComment))
                 .on("click",function(e){
-                    let selectedUserId = $(".starInfoBox #userId");
-                    let selectedKakaoId = $(".starInfoBox #kakaoId");
-                    let selectedInstaId = $(".starInfoBox #instaId");
-                    let selectedYoutubeChNm = $(".starInfoBox #youtubeChNm");
-                    let selectedAccountNum = $(".starInfoBox #accountNum");
-                    let selectedAccountNm = $(".starInfoBox #accountNm");
-                    let selectedUserComment = $(".starInfoBox #userComment");
+                    let selectedUserId = $(".starInfoBox #userId #value");
+                    let selectedKakaoId = $(".starInfoBox #kakaoId #value");
+                    let selectedInstaId = $(".starInfoBox #instaId #value");
+                    let selectedYoutubeChNm = $(".starInfoBox #youtubeChNm #value");
+                    let selectedbankNm = $(".starInfoBox #bankNm #value");
+                    let selectedAccountNum = $(".starInfoBox #accountNum #value");
+                    let selectedAccountNm = $(".starInfoBox #accountNm #value");
+                    let selectedUserComment = $(".starInfoBox #userComment #value");
+                    let selectedAdminComment = $(".starInfoBox #adminComment #value");
 
 
                     selectedUserId.text(e.currentTarget.querySelector("#userId").textContent);
                     selectedKakaoId.text(e.currentTarget.querySelector("#kakaoId").textContent);
                     selectedInstaId.text(e.currentTarget.querySelector("#instaId").textContent);
                     selectedYoutubeChNm.text(e.currentTarget.querySelector("#youtubeChNm").textContent);
+                    selectedbankNm.text(e.currentTarget.querySelector("#bankNm").textContent);
                     selectedAccountNum.text(e.currentTarget.querySelector("#accountNum").textContent);
                     selectedAccountNm.text(e.currentTarget.querySelector("#accountNm").textContent);
                     selectedUserComment.text(e.currentTarget.querySelector("#userComment").textContent);
+                    selectedAdminComment.text(e.currentTarget.querySelector("#adminComment").textContent);
                     e.stopPropagation();
                 });
                 tableElm.append(trTag);

@@ -55,6 +55,11 @@
 
 }
 
+
+.starInfoBox #value{
+    color: blue;
+}
+
 th,td{
 width: 10em;
 }
