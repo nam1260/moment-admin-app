@@ -21,7 +21,13 @@ const AWSManager = (function() {
     };
 
     const requestPost = (url, params) => {
-        return axios.post(url, params, {headers});
+
+        return axios({
+            method: 'post',
+            url: url,
+            headers: headers,
+            data: params
+        });
     };
 
     const getRgstStarStatus = async (params) => {

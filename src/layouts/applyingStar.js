@@ -75,7 +75,7 @@ const applyingStar = ((parentView)=>{
             let userId = searchUserBox.find(".inputArea")[0].value;
             AWSManager.getRgstStarStatus({
                 userId: userId ? userId : undefined
-            }).then(makeApplyingUserListTable);
+            }).then(makeApplyingUserListTable).catch((e) => {console.log(e)});
 
         }
 
@@ -99,7 +99,7 @@ const applyingStar = ((parentView)=>{
         parentView.append(tableElm);
 
         if(result && result.data) {
-            result.data.forEach((item,idx)=>{
+            result.data.filter(item=>item.starYn !=="Y").forEach((item,idx)=>{
                 let trTag = $("<tr/>",{class: "member_ "+[idx]} );
                 trTag.append(
                     $("<td/>",{id: "userId"}).text(item.userId),
