@@ -22,32 +22,60 @@ const AWSManager = (function() {
 
     const requestPost = (url, params) => {
 
-        return axios({
+        axios({
             method: 'post',
             url: url,
             headers: headers,
-            data: params
-        });
+            data: params.postData
+        }).then(handleResponse)
+        .catch(handleError);
+
+        function handleResponse(response) {
+            console.log("handleResponse");
+            console.log(response);
+            if(params.callback) params.callback(true,response);
+        }
+        function handleError(error) {
+            console.log("handleError");
+            if (error.response) {
+                // 요청이 이루어졌으며 서버가 2xx의 범위를 벗어나는 상태 코드로 응답했습니다.
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+            }
+            else if (error.request) {
+                // 요청이 이루어 졌으나 응답을 받지 못했습니다.
+                // `error.request`는 브라우저의 XMLHttpRequest 인스턴스 또는
+                // Node.js의 http.ClientRequest 인스턴스입니다.
+                console.log(error.request);
+            }
+            else {
+                // 오류를 발생시킨 요청을 설정하는 중에 문제가 발생했습니다.
+                console.log('Error', error.message);
+            }
+            console.log(error.config);
+            if(params.callback) params.callback(false)
+        }
     };
 
-    const getRgstStarStatus = async (params) => {
+    const getRgstStarStatus = (params) => {
         console.log("getRgstStarStatus");
-        return await requestPost(getUrl(GET_RGST_STAR_STATUS), params);
+        requestPost(getUrl(GET_RGST_STAR_STATUS), params);
     };
 
 
-    const reqRgstStar = async (params) => {
+    const reqRgstStar = (params) => {
         console.log("reqRgstStar = " + JSON.stringify(params));
-        return await requestPost(getUrl(REQ_RGST_STAR), params);
+        requestPost(getUrl(REQ_RGST_STAR), params);
     };
 
-    const updateRgstStarStatus = async (params) => {
+    const updateRgstStarStatus = (params) => {
         console.log("updateRgstStarStatus = " + JSON.stringify(params));
-        return await requestPost(getUrl(UPDATE_RGST_STAR_STATUS), params);
+        requestPost(getUrl(UPDATE_RGST_STAR_STATUS), params);
     };
-    const checkDuplId = async (params) => {
+    const checkDuplId = (params) => {
         console.log("checkDuplId = " + JSON.stringify(params));
-        return await requestPost(getUrl(CHECK_DUPL_ID), params);
+        requestPost(getUrl(CHECK_DUPL_ID), params);
     };
 
 

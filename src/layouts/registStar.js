@@ -1,9 +1,9 @@
 import AWSManager from "../managers/AWSManager";
 
 
-const handleCompleteRegist = (_result) => {
-    console.log(_result);
-    if(_result && _result.status === 200) {
+const handleCompleteRegist = (result,response) => {
+    console.log(response);
+    if(response && response.status === 200) {
         alert("스타 등록 신청이 완료되었습니다");
     }else {
         alert("서버 에러 ");
@@ -36,23 +36,28 @@ const onClickBtn = (e) => {
     //
 
     AWSManager.checkDuplId({
-        userId: userId
-    }).then(function(result){
-        if(result && result.status === 200) {
-            if(!result.data.isDupl) alert("모먼트 가입 유저만 사용자만 스타 등록이 가능합니다.");
-            else {
-                AWSManager.reqRgstStar({
-                    userId,
-                    kakaoId,
-                    instaId,
-                    youtubeChNm,
-                    bankNm,
-                    accountNum,
-                    accountNm
-                }).then(handleCompleteRegist)
+        postData: {userId},
+        callback: function (result, response) {
+            if (response && response.status === 200) {
+                if (!response.data.isDupl) alert("모먼트 가입 유저만 사용자만 스타 등록이 가능합니다.");
+                else {
+                    AWSManager.reqRgstStar({
+                        postData: {
+                            userId,
+                            kakaoId,
+                            instaId,
+                            youtubeChNm,
+                            bankNm,
+                            accountNum,
+                            accountNm
+                        },
+                        callback: handleCompleteRegist
+                    })
+                }
             }
-        }else {
-            alert("서버 에러 ");
+            else {
+                alert("서버 에러 ");
+            }
         }
     })
 

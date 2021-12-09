@@ -27,11 +27,12 @@ function onSelectedUserBtnClick(e) {
     }
 
     AWSManager.updateRgstStarStatus({
-        userId,
-        adminComment,
-        starYn,
-        starRegStatus
-
+        postData: {
+            userId,
+            adminComment,
+            starYn,
+            starRegStatus
+        }
     })
 
 }
@@ -74,8 +75,9 @@ const applyingStar = ((parentView)=>{
         function onSearchBtnClick(e) {
             let userId = searchUserBox.find(".inputArea")[0].value;
             AWSManager.getRgstStarStatus({
-                userId: userId ? userId : undefined
-            }).then(makeApplyingUserListTable).catch((e) => {console.log(e)});
+                postData:{userId: userId ? userId : undefined},
+                callback: makeApplyingUserListTable
+            });
 
         }
 
@@ -84,9 +86,9 @@ const applyingStar = ((parentView)=>{
 
 
 
-    const makeApplyingUserListTable= (result) => {
+    const makeApplyingUserListTable= (result,response) => {
 
-        if(!result.data || result.data.length === 0) {
+        if(!response.data || response.data.length === 0) {
             alert("조회된 스타 등록 정보가 없습니다");
             return ;
         }
@@ -98,8 +100,8 @@ const applyingStar = ((parentView)=>{
 
         parentView.append(tableElm);
 
-        if(result && result.data) {
-            result.data.filter(item=>item.starYn !=="Y").forEach((item,idx)=>{
+        if(response && response.data) {
+            response.data.filter(item=>item.starYn !=="Y").forEach((item,idx)=>{
                 let trTag = $("<tr/>",{class: "member_ "+[idx]} );
                 trTag.append(
                     $("<td/>",{id: "userId"}).text(item.userId),
