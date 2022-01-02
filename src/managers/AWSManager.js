@@ -8,7 +8,7 @@ const GET_RGST_STAR_STATUS = "/star/get-rgst-star-status";
 const UPDATE_RGST_STAR_STATUS = "/star/update-rgst-star-status";
 const REQ_RGST_STAR = "/star/req-rgst-star";
 const CHECK_DUPL_ID  =  "/user/check-dupl-id";
-const SEND_MESSAGE_TO_STAR = "/msg/send-message-to-star"
+const SEND_MESSAGE_TO_STAR = "/msg/send-msg-to-star";
 
 
 const API_KEYS = 'hFkmbKrQxO7G8EyATQbBQ8UP8qaS2Lru3ndYbHWL';

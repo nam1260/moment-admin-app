@@ -27,16 +27,17 @@ const sendMessage = ((parentView)=>{
 
         const receiverId = receiver.find("input")[0].value;
         const senderId = sender.find("input")[0].value;
-        const message = messageText.find("input")[0].value;
+        const msgContents = messageText.find("input")[0].value;
 
-        if(!receiverId || !senderId || !message) alert("빈 값을 채우세요");
+        if(!receiverId || !senderId || !msgContents) alert("빈 값을 채우세요");
 
         AWSManager.sendMessageToStar({
             postData:{
                 receiverId,
                 senderId,
-                deliveryDate : "2022/12/31",
-                message
+                deliveryDate : "20221231",
+                msgContents,
+                msgTitle: "사연제모오옥"
             },
             callback: (result,response)=>{
                 if(result) {
