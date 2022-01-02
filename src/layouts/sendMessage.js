@@ -25,16 +25,16 @@ const sendMessage = ((parentView)=>{
     const onClickSendBtn = (e) => {
         console.log("onClickSendBtn");
 
-        const receiverId = receiver.find("input")[0].value;
-        const senderId = sender.find("input")[0].value;
+        const starId = receiver.find("input")[0].value;
+        const userId = sender.find("input")[0].value;
         const msgContents = messageText.find("input")[0].value;
 
-        if(!receiverId || !senderId || !msgContents) alert("빈 값을 채우세요");
+        if(!starId || !userId || !msgContents) alert("빈 값을 채우세요");
 
         AWSManager.sendMessageToStar({
             postData:{
-                receiverId,
-                senderId,
+                userId,
+                starId,
                 deliveryDate : "20221231",
                 msgContents,
                 msgTitle: "사연제모오옥"
