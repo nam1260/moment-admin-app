@@ -161,7 +161,6 @@ const applyingStar = ((parentView)=>{
     }
 
 
-
     if(parentView) parentView.empty();
 
     let titleArea = $("<div/>", {class: "titleArea"});
