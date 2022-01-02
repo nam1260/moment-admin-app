@@ -101,7 +101,7 @@ const applyingStar = ((parentView)=>{
         parentView.append(tableElm);
 
         if(response && response.data) {
-            response.data.filter(item=>item.starYn !=="Y").forEach((item,idx)=>{
+            response.data.filter(item=>item.starYn !=="Y" && item.starRegStatus !== 2).forEach((item,idx)=>{
                 let trTag = $("<tr/>",{class: "member_ "+[idx]} );
                 trTag.append(
                     $("<td/>",{id: "userId"}).text(item.userId),
