@@ -13,6 +13,7 @@
 .childMenu{
     display: inline;
     margin-right: 5em;
+    cursor: pointer;
 }
 
 .contentView{
