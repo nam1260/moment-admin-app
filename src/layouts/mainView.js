@@ -54,7 +54,8 @@ const makeNaviMenu = (parent) => {
             RegistStar(contentView);
         } else if(idx ===2){
             sendMessage(contentView);
-        }else if(idx ===3){
+        }else if(idx === 3){
+            console.log("aslfkjasf")
             messageList(contentView);
         }else {
             alert("현재 기능을 지원하지 않습니다");
