@@ -61,6 +61,16 @@
     color: blue;
 }
 
+.msgInfoBox {
+    max-width: 300px;
+    word-break: break-all;
+    display: inline-block;
+}
+.msgInfoBox #value{
+    color: blue
+}
+
 th,td{
-width: 10em;
+max-width: 300px;
+word-break:break-all;
 }
