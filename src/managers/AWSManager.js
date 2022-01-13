@@ -11,6 +11,14 @@ const CHECK_DUPL_ID  =  "/user/check-dupl-id";
 const SEND_MESSAGE_TO_STAR = "/msg/send-msg-to-star";
 const GET_MSG_LIST = "/msg/get-msg-list-test";
 const UPDATE_STAR_MSG_INFO = "/msg/update-star-msg-info";
+
+//payment 관련
+const GET_PAYMENT_LIST = "/pay/get-payment-list";
+const REG_PAYMENT_INFO = "/pay/reg-payment-info";
+const UPDATE_PAYMENT_INFO = "/pay/update-payment-info";
+const DELETE_PAYMENT_INFO = "/pay/delete-payment-info";
+
+
 const API_KEYS = 'hFkmbKrQxO7G8EyATQbBQ8UP8qaS2Lru3ndYbHWL';
 const headers = {
     'x-api-key' : API_KEYS,
@@ -88,13 +96,32 @@ const AWSManager = (function() {
 
     const getMsgList = (params) => {
         console.log("getMsgList = " +JSON.stringify(params));
-        return requestPost(getUrl(GET_MSG_LIST), params);
+        requestPost(getUrl(GET_MSG_LIST), params);
     }
 
     const updateStarMsgInfo = (params) => {
         console.log("updateStarMsgInfo = " +JSON.stringify(params));
-        return requestPost(getUrl(UPDATE_STAR_MSG_INFO), params);
+        requestPost(getUrl(UPDATE_STAR_MSG_INFO), params);
     };
+
+
+    const getPaymentList = (params) => {
+        console.log("getPaymentList =" + JSON.stringify(params));
+        requestPost(getUrl(GET_PAYMENT_LIST), params);
+    }
+
+    const updatePaymentInfo = (params) => {
+        console.log("updatePaymentInfo =" + JSON.stringify(params));
+        requestPost(getUrl(UPDATE_PAYMENT_INFO), params);
+    }
+    const regPaymentInfo = (params) => {
+        console.log("regPaymentInfo =" + JSON.stringify(params));
+        requestPost(getUrl(REG_PAYMENT_INFO), params);
+    }
+    const deletePaymentInfo = (params) => {
+        console.log("deletePaymentInfo =" + JSON.stringify(params));
+        requestPost(getUrl(DELETE_PAYMENT_INFO), params);
+    }
 
 
 
@@ -106,7 +133,12 @@ const AWSManager = (function() {
         checkDuplId,
         sendMessageToStar,
         getMsgList,
-        updateStarMsgInfo
+        updateStarMsgInfo,
+
+        getPaymentList,
+        updatePaymentInfo,
+        regPaymentInfo,
+        deletePaymentInfo
     }
 
 
