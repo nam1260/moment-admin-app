@@ -47,9 +47,9 @@ const onSelectChangeStatus = (e) => {
             break;
 
         // 사연 거절(취소 처리)
-        // "90" or "91"인 경우만 유효
+        // "90" or "91"인 경우만 유효 or "0" 인 경우도 처리 위해 필요
         case "rejectMsg":
-            if(postData.msgStatus !== "90" && postData.msgStatus !== "91") {
+            if(postData.msgStatus !== "90" && postData.msgStatus !== "91" && postData.msgStatus !== "0") {
                 alert("사연 거절 가능한 상태가 아닙니다"); return;
             }
             postData.msgStatus = "2";
