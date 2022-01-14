@@ -126,24 +126,21 @@ const messageList=((parentView) => {
             .css({"text-align": "left"})
             .text("상태 변경"),
             $("<button class='acceptLink'>영상 승인(3) 처리</button>").on("click",onSelectChangeStatus),
-            $("<button class='acceptMsg'>사연 승인(0) 처리</button>").on("click",onSelectChangeStatus),
+            $("<button class='acceptMsg'>정상 사연(0) 처리</button>").on("click",onSelectChangeStatus),
             $("<button class='rejectMsg'>사연 거절(취소) (2) 처리</button>").on("click",onSelectChangeStatus),
             $("<br/>"),
             $("<br/>"),
-            $("<button class='_81_'>81로변경</button>").on("click",onSelectChangeStatus),
-            $("<button class='_80_'>80로변경</button>").on("click",onSelectChangeStatus),
-            $("<button class='_0_'>0로변경</button>").on("click",onSelectChangeStatus),
-            $("<button class='_1_'>1로변경</button>").on("click",onSelectChangeStatus),
-            $("<button class='_2_'>2로변경</button>").on("click",onSelectChangeStatus),
-            $("<button class='_3_'>3로변경</button>").on("click",onSelectChangeStatus),
-            $("<button class='_4_'>4로변경</button>").on("click",onSelectChangeStatus),
-            $("<button class='_90_'>90로변경</button>").on("click",onSelectChangeStatus),
-            $("<button class='_91_'>91로변경</button>").on("click",onSelectChangeStatus),
-            $("<button class='_92_'>92로변경</button>").on("click",onSelectChangeStatus),
+            $("<button class='_81_'>영상 부적합(81)</button>").on("click",onSelectChangeStatus),
+            $("<button class='_80_'>영상 검증 필요(80)</button>").on("click",onSelectChangeStatus),
+            $("<button class='_0_'>정상 사연 처리(0)</button>").on("click",onSelectChangeStatus),
+            $("<button class='_1_'>사연 수락 처리(1)</button>").on("click",onSelectChangeStatus),
+            $("<button class='_2_'>사연 거절 처리(2)</button>").on("click",onSelectChangeStatus),
+            $("<button class='_3_'>배송 완료 처리(3)</button>").on("click",onSelectChangeStatus),
+            $("<button class='_4_'>영상 취소 처리(4)</button>").on("click",onSelectChangeStatus),
+            $("<button class='_90_'>입금 대기 처리(90)</button>").on("click",onSelectChangeStatus),
+            $("<button class='_91_'>결제 완료 처리(91)</button>").on("click",onSelectChangeStatus),
+            $("<button class='_92_'>결제 취소 처리(92)</button>").on("click",onSelectChangeStatus),
             $("<br/>"),
-
-
-
 
         );
 
