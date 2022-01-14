@@ -3,7 +3,6 @@ import AWSManager from '../managers/AWSManager';
 
 function onSelectedUserBtnClick(e) {
     console.log(e);
-    window.btnclick = e;
 
     if(e.target.className !== "accept" && e.target.className !== "reject") return ;
 
