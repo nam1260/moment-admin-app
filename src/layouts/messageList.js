@@ -55,14 +55,51 @@ const onSelectChangeStatus = (e) => {
             postData.msgStatus = "2";
             //TODO 결제취소
             break;
+        case "_80_":
+            postData.msgStatus = "80";
+            break;
+        case "_81_":
+            postData.msgStatus = "81";
+            break;
+        case "_0_":
+            postData.msgStatus = "0";
+            break;
+        case "_1_":
+            postData.msgStatus = "1";
+            break;
+        case "_2_":
+            postData.msgStatus = "2";
+            break;
+        case "_3_":
+            postData.msgStatus = "3";
+            break;
+        case "_4_":
+            postData.msgStatus = "4";
+            break;
+        case "_91_":
+            postData.msgStatus = "91";
+            break;
+        case "_90_":
+            postData.msgStatus = "90";
+            break;
+        case "_92_":
+            postData.msgStatus = "92";
+            break;
         default:
             return ;
             break;
     }
 
     AWSManager.updateStarMsgInfo({
-        postData
+        postData,
+        callback
     })
+
+    function callback(result) {
+        if(result) {
+            alert("변경되었습니다")
+        }
+    }
 
 };
 
@@ -88,9 +125,23 @@ const messageList=((parentView) => {
             $("<span class='answer'/>")
             .css({"text-align": "left"})
             .text("상태 변경"),
-            $("<button class='acceptLink'>영상 승인 처리</button>").on("click",onSelectChangeStatus),
-            $("<button class='acceptMsg'>사연 승인 처리</button>").on("click",onSelectChangeStatus),
-            $("<button class='rejectMsg'>사연 거절(취소) 처리</button>").on("click",onSelectChangeStatus),
+            $("<button class='acceptLink'>영상 승인(3) 처리</button>").on("click",onSelectChangeStatus),
+            $("<button class='acceptMsg'>사연 승인(0) 처리</button>").on("click",onSelectChangeStatus),
+            $("<button class='rejectMsg'>사연 거절(취소) (2) 처리</button>").on("click",onSelectChangeStatus),
+            $("<br/>"),
+            $("<br/>"),
+            $("<button class='_81_'>81로변경</button>").on("click",onSelectChangeStatus),
+            $("<button class='_80_'>80로변경</button>").on("click",onSelectChangeStatus),
+            $("<button class='_0_'>0로변경</button>").on("click",onSelectChangeStatus),
+            $("<button class='_1_'>1로변경</button>").on("click",onSelectChangeStatus),
+            $("<button class='_2_'>2로변경</button>").on("click",onSelectChangeStatus),
+            $("<button class='_3_'>3로변경</button>").on("click",onSelectChangeStatus),
+            $("<button class='_4_'>4로변경</button>").on("click",onSelectChangeStatus),
+            $("<button class='_90_'>90로변경</button>").on("click",onSelectChangeStatus),
+            $("<button class='_91_'>91로변경</button>").on("click",onSelectChangeStatus),
+            $("<button class='_92_'>92로변경</button>").on("click",onSelectChangeStatus),
+            $("<br/>"),
+
 
 
 
@@ -105,11 +156,24 @@ const messageList=((parentView) => {
     const makeGetMsgListBox = () => {
         let msgListBox = $("<div/>", {class: "msgListBox"})
         .append(
-            $("<span/>").text("메시지 상태 조회 "),
-            $("<input/>",{style: "width: 300px",class: "inputArea",placeholder: "80(보낸 링크 검증),90(입금 대기 중), 91(사연 검증)"}),
-            $("<button/>",{class: "searchBtn"}).text("조회").on("click",onSearchBtnClick));
+            $("<span/>").text("메시지 상태로 조회 "),
+            $("<input/>",{style: "width: 300px",class: "inputArea",placeholder: "80(링크 검증 필요 사연),90(결제 대기 사연), 91(결제 완료사연)"}),
+            $("<button/>",{class: "searchBtn"}).text("조회").on("click",onClickGetStatus))
+        .append(
+            $("<br/>"),
+            $("<span/>").text("보낸사람 id로 조회 "),
+            $("<input/>",{style: "width: 300px",class: "inputArea",placeholder: "유저 id 입력"}),
+            $("<button/>",{class: "searchBtn"}).text("조회").on("click",onClickGetUser))
+        .append(
+            $("<br/>"),
+            $("<span/>").text("받은사람 id로 조회"),
+            $("<input/>",{style: "width: 300px",class: "inputArea",placeholder: "스타 id 입력"}),
+            $("<button/>",{class: "searchBtn"}).text("조회").on("click",onClickGetStar)
+        )
 
-        function onSearchBtnClick(e) {
+
+
+        function onClickGetStatus(e) {
             let key = msgListBox.find(".inputArea")[0].value;
             AWSManager.getMsgList({
                 postData: {
@@ -120,6 +184,32 @@ const messageList=((parentView) => {
             });
 
         }
+
+        function onClickGetUser(e) {
+            let key = msgListBox.find(".inputArea")[1].value;
+            AWSManager.getMsgList({
+                postData: {
+                    key: "userId",
+                    value: key,
+                },
+                callback: makeMessageListTable
+            });
+
+        }
+
+
+        function onClickGetStar(e) {
+            let key = msgListBox.find(".inputArea")[2].value;
+            AWSManager.getMsgList({
+                postData: {
+                    key: "starId",
+                    value: key,
+                },
+                callback: makeMessageListTable
+            });
+
+        }
+
 
         return msgListBox;
     };
