@@ -166,7 +166,12 @@ const messageList=((parentView) => {
             $("<span/>").text("받은사람 id로 조회"),
             $("<input/>",{style: "width: 300px",class: "inputArea",placeholder: "스타 id 입력"}),
             $("<button/>",{class: "searchBtn"}).text("조회").on("click",onClickGetStar)
+        ).append(
+            $("<br/>"),
+            $("<span/>").text("구분없이 전체 조회"),
+            $("<button/>", {class: "searchBtn"}).text("전체 조회").on("click", onClickGetAll)
         )
+
 
 
 
@@ -201,6 +206,18 @@ const messageList=((parentView) => {
                 postData: {
                     key: "starId",
                     value: key,
+                },
+                callback: makeMessageListTable
+            });
+
+        }
+
+        function onClickGetAll(e) {
+            let key = msgListBox.find(".inputArea")[2].value;
+            AWSManager.getMsgList({
+                postData: {
+                    key: "all",
+                    value: '',
                 },
                 callback: makeMessageListTable
             });
