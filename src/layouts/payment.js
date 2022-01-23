@@ -92,6 +92,7 @@ const payment = ((parentView)=>{
                 trTag.append(
                     $("<td/>",{id: "payNo"}).text(item.payNo),
                     $("<td/>",{id: "msgId"}).text(item.msgId),
+                    $("<td/>",{id: "orderId"}).text(item.orderId),
                     $("<td/>",{id: "userId"}).text(item.userId),
                     $("<td/>",{id: "starId"}).text(item.starId),
                     $("<td/>",{id: "payType"}).text(item.payType),
@@ -103,10 +104,12 @@ const payment = ((parentView)=>{
                     $("<td/>",{id: "cardNum"}).text(item.cardNum),
                     $("<td/>",{id: "userBankNm"}).text(item.userBankNm),
                     $("<td/>",{id: "userAccountNm"}).text(item.userAccountNm),
-                    $("<td/>",{id: "userAccountNum"}).text(item.userAccountNum || item.userAccountNnm))
+                    $("<td/>",{id: "userAccountNum"}).text(item.userAccountNum || item.userAccountNnm),
+                    $("<td/>",{id: "emPhoneNum"}).text(item.emPhoneNum))
                 .on("click",function(e){
                     let selectedPayNo = $(".paymentInfoBox #payNo #value");
                     let selectedMsgId = $(".paymentInfoBox #msgId #value");
+                    let selectedOrderId = $(".paymentInfoBox #orderId #value");
                     let selectedUserId = $(".paymentInfoBox #userId #value");
                     let selectedStarId = $(".paymentInfoBox #starId #value");
                     let selectedPayType = $(".paymentInfoBox #payType #value");
@@ -119,11 +122,11 @@ const payment = ((parentView)=>{
                     let selectedUserBankNm = $(".paymentInfoBox #userBankNm #value");
                     let selectedUserAccountNm = $(".paymentInfoBox #userAccountNm #value");
                     let selectedUserAccountNum = $(".paymentInfoBox #userAccountNum #value");
-
-
+                    let selectedEmPhoneNum = $(".paymentInfoBox #emPhoneNum #value");
 
                     selectedPayNo.text(e.currentTarget.querySelector("#payNo").textContent);
                     selectedMsgId.text(e.currentTarget.querySelector("#msgId").textContent);
+                    selectedOrderId.text(e.currentTarget.querySelector("#orderId").textContent);
                     selectedUserId.text(e.currentTarget.querySelector("#userId").textContent);
                     selectedStarId.text(e.currentTarget.querySelector("#starId").textContent);
                     selectedPayType.text(e.currentTarget.querySelector("#payType").textContent);
@@ -136,6 +139,7 @@ const payment = ((parentView)=>{
                     selectedUserBankNm.text(e.currentTarget.querySelector("#userBankNm").textContent);
                     selectedUserAccountNm.text(e.currentTarget.querySelector("#userAccountNm").textContent);
                     selectedUserAccountNum.text(e.currentTarget.querySelector("#userAccountNum").textContent);
+                    selectedEmPhoneNum.text(e.currentTarget.querySelector("#selectedEmPhoneNum").textContent);
 
 
 
@@ -209,6 +213,7 @@ const payment = ((parentView)=>{
         paymentInfoBox.append(
             $("<div/>", {id: "payNo"}).append($("<span />").text("결제 번호"),$("<span />",{id:"value"})),
             $("<div/>", {id: "msgId"}).append($("<span />").text("메시지 id: "),$("<span />",{id:"value"})),
+            $("<div/>", {id: "orderId"}).append($("<span />").text("주 id: "),$("<span />",{id:"value"})),
             $("<div/>", {id: "userId"}).append($("<span />").text("보낸 사람: "),$("<span />",{id:"value"})),
             $("<div/>", {id: "starId"}).append($("<span />").text("받는 사람: "),$("<span />",{id:"value"})),
             $("<div/>", {id: "payType"}).append($("<span />").text("결제 타입"),$("<span />",{id:"value"})),
@@ -221,6 +226,7 @@ const payment = ((parentView)=>{
             $("<div/>", {id: "userBankNm"}).append($("<span />").text("입금자 : "), $("<span />", {id: "value"})),
             $("<div/>", {id: "userAccountNm"}).append($("<span />").text("계좌 이름 : "), $("<span />", {id: "value"})),
             $("<div/>", {id: "userAccountNum"}).append($("<span />").text("계좌 번호: "), $("<span />", {id: "value"})),
+            $("<div/>", {id: "emPhoneNum"}).append($("<span />").text("긴급 연락처: "), $("<span />", {id: "value"})),
             $("<br/>"),
 
         ).append(
@@ -246,6 +252,7 @@ const payment = ((parentView)=>{
             "<tr>" +
             "<th>결제 번호</th>" +
             "<th>사연 번호</th>" +
+            "<th>주문 id</th>" +
             "<th>보낸 사람</th>" +
             "<th>받는 사람</th>" +
             "<th>결제 타입</th>" +
@@ -258,6 +265,7 @@ const payment = ((parentView)=>{
             "<th>입금자명</th>" +
             "<th>계좌 이름</th>" +
             "<th>계좌 번호</th>" +
+            "<th>긴급 연락처</th>" +
             "</tr>" +
             "</table>");
 
