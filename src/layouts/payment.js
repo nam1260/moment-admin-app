@@ -43,12 +43,14 @@ const onClickUpdateBtn = (e)=>{
 
     let userId = $(".paymentInfoBox #userId #value").text();
     let payNo = $(".paymentInfoBox #payNo #value").text();
+    let orderId = $(".paymentInfoBox #orderId #value").text();
     let payStatus = $(".paymentInfoBox input")[0].value;
     AWSManager.updatePaymentInfo({
         postData: {
-            payNo: payNo,
-            userId: userId,
-            payStatus: payStatus,
+            payNo,
+            userId,
+            payStatus,
+            orderId
         },
         callback: function(result) {
             if(result) {
